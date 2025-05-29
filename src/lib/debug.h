@@ -23,12 +23,7 @@ void debug_panic(const char* file, int line, const char* function, const char* m
 
 
 #ifndef NDEBUG
-#define ASSERT(expr) \
-    do { \
-        if (!(expr)) { \
-            PANIC("Assertion '", #expr, "' failed"); \
-        } \
-    } while (0)
+#define ASSERT(expr) do { if (!(expr)) { PANIC("Assertion '", #expr, "' failed"); }} while (0)
 #else
 #define ASSERT(expr) ((void)0)
 #endif
