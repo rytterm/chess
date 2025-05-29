@@ -1,12 +1,12 @@
 CC = g++
-CFLAGS = -Wall -Wextra -g -O0
+CFLAGS = -Wall -Wextra -g -O0 -MMD -MP
 
 SRC_DIR = src
 OBJ_DIR = build
 
 SRCS := $(shell find $(SRC_DIR) -name '*.cc')
-
 OBJS := $(patsubst $(SRC_DIR)/%.cc,$(OBJ_DIR)/%.o,$(SRCS))
+DEPS := $(OBJS:.o=.d)
 
 TARGET = a.out
 
@@ -20,6 +20,8 @@ $(TARGET): $(OBJS)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cc
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+-include $(DEPS)
 
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET)
