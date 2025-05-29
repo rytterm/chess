@@ -12,8 +12,8 @@ template<typename... Args>
 NO_RETURN
 void debug_panic(const char* file, int line, const char* function, const char* message, Args&&... args) {
     std::ostringstream oss;
-    (oss << ... << args) << "";
-    std::cerr << message << oss.str() << "\nProgram exited at " << file << ":" << line <<  " in " << function << "\n";
+    (oss << ... << args) << "\n";
+    std::cerr << message << oss.str() << "Program exited at " << file << ":" << line <<  " in " << function << "\n";
     std::cerr << std::flush;
     std::exit(EXIT_FAILURE);
 }
