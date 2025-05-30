@@ -8,17 +8,19 @@ Piece::Piece(PieceType p, Color c)
 
 
 PieceType Piece::getType() const {
+    ASSERT(this != nullptr);
     return type;
 }
 
 
 Color Piece::getColor() const {
+    ASSERT(this != nullptr);
     return color;
 }
 
 
 bool Piece::isEmpty() const {
-    return type == PieceType::NONE;
+    return type == NO_TYPE;
 }
 
 
@@ -37,6 +39,7 @@ PieceType operator++(PieceType& p, int) {
     ++p;
     return old;
 }
+
 
 
 

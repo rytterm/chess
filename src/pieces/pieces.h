@@ -2,8 +2,8 @@
 #include "../lib/debug.h"
 
 
-enum class PieceType {
-    NONE,
+enum PieceType {
+    NO_TYPE,
     PAWN,
     KNIGHT,
     BISHOP,
@@ -19,9 +19,8 @@ PieceType&   operator++(PieceType&);
 PieceType    operator++(PieceType&, int);
 
 
-
-enum class Color {
-    NONE,
+enum Color {
+    NO_COLOR,
     WHITE,
     BLACK,
     NUM_COLORS
