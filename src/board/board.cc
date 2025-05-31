@@ -33,12 +33,12 @@ void Board::printBoard() {
                     case ROOK: std::cout << "R"; break;
                     case QUEEN: std::cout << "Q"; break;
                     case KING: std::cout << "K"; break;
-                    default: PANIC("Invalid type on board");
+                    default: std::cout << ' '; break;
                 }
                 switch(board[j][i]->getColor()) {
                     case WHITE: std::cout << "W"; break;
                     case BLACK: std::cout << "B"; break;
-                    default: PANIC("Invalid color on board");
+                    default: std::cout << ' '; break;
                 }
             }
         }

@@ -1,6 +1,10 @@
 CC = g++
 CFLAGS = -Wall -Wextra -g -O0 -MMD -MP
 
+ifeq ($(DBG), 0)
+  CFLAGS += -DNDEBUG
+endif
+
 SRC_DIR = src
 OBJ_DIR = build
 
@@ -10,7 +14,7 @@ DEPS := $(OBJS:.o=.d)
 
 TARGET = a.out
 
-.PHONY: all clean
+.PHONY: all clean debug
 
 all: $(TARGET)
 
@@ -21,7 +25,15 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cc
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(OBJ_DIR)/%.d: $(SRC_DIR)/%.cc
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -MMD -MP -MF $@ -c $<
+
 -include $(DEPS)
 
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET)
+
+# Debug rule to print CFLAGS
+debug:
+	@echo "CFLAGS: $(CFLAGS)"
