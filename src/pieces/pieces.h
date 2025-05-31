@@ -4,12 +4,12 @@
 
 enum PieceType {
     NO_TYPE,
-    PAWN,
+    ROOK,
     KNIGHT,
     BISHOP,
-    ROOK,
     QUEEN,
     KING,
+    PAWN,
     NUM_PIECE_TYPES
 };
 
@@ -35,7 +35,7 @@ Color    operator++(Color&, int);
 
 class Piece {
 public:
-    Piece(PieceType, Color);
+    Piece(PieceType, Color, int, int);
     PieceType   getType() const;
     Color       getColor() const;
     bool        isEmpty() const;
@@ -43,4 +43,5 @@ public:
 private:
     PieceType   type;
     Color       color;
+    int         row, col;
 };

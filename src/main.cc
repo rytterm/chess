@@ -2,6 +2,6 @@
 #include "board/board.h"
 
 int main(void) {
-    //Board().printBoard();
+    Board().printBoard();
 
 }

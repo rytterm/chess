@@ -1,8 +1,8 @@
 #include "pieces.h"
 
 
-Piece::Piece(PieceType p, Color c) 
-    : type{p}, color{c}
+Piece::Piece(PieceType p, Color c, int r, int co) 
+    : type{p}, color{c}, row{r}, col{co}
 {}
 
 
